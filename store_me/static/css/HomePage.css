@@ -1,0 +1,131 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+:root {
+    /* --menu_background: #45a2ff; */
+    --green: #28a745;
+    --dark-gray: #333b3f;
+    --light-dark-gray: #585f63;
+    --light-gray : #f1f1f1;
+}
+/* filter menu */
+.filter_menu {
+    height: 50px;
+    background-color: var(--light-dark-gray);
+    position: sticky;
+    top: 56px; /* as the navbar height */
+    z-index: 1;
+}
+
+/* products container */
+.products_container {
+    margin: 50px 0;
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    row-gap: 30px;
+}
+@media only screen and (max-width: 1300px) {
+    .products_container {
+        grid-template-columns: repeat(3, auto);
+    }
+}
+@media only screen and (max-width: 1000px) {
+    .products_container {
+        grid-template-columns: repeat(2, auto);
+    }
+}
+@media only screen and (max-width: 650px) {
+    .products_container {
+        grid-template-columns: repeat(1, auto);
+    }
+}
+
+.results_counter {
+    text-align: center;
+    margin-top: 20px;
+}
+.results_counter span {
+    font-size: 18px;
+    font-weight: bold;
+}
+/* cards */
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    width: 300px;
+    min-width: 200px;
+    height: 500px;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+}
+.card:hover .card button {
+
+}
+.price {
+    color: var(--light-dark-gray);
+    font-size: 22px;
+}
+.row {
+    display: flex;
+    justify-content: center;
+}
+.row_name {
+    margin-right: 10px;
+}
+.color_indicate {
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    border: 1px solid black;
+}
+.card img {
+    width: 100%;
+    max-height: 400px;
+    cursor: pointer;
+}
+.card img:hover {
+    /* TODO: add nice animation */
+}
+.card button {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: var(--dark-gray);
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+    
+}
+.card:hover button {
+    background-image: linear-gradient(
+      to right,
+      transparent 33%,
+      rgba(255,255,255,0.3) 50%,
+      transparent 66%
+    );
+    background-size:300% 100%;
+    animation: shine 2s;
+}
+@keyframes shine {
+    0% {
+      background-position: right;    
+    }
+    /*100% {
+      background-position: left; it's the default value, no need to define it
+    }*/
+}
+.cart_p {
+    margin: 0;
+}
+.card .add_to_cart_btn:hover {
+    color: white;
+    background-color: var(--green);
+    transition: .2s ease;
+}
+.guid {
+    display: none;
+}

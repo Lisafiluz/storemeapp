@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+{% block header %}
+    <link rel="stylesheet" href="../static/css/SignIn.css">
+{% endblock header %}
+{% block content %}
+    <div class="signIn_container">
+        <div class="signIn_theme">
+            <span>Sign In</span>
+        </div>
+        <form class="form_container" method="POST" action="">
+            {{ form.hidden_tag() }}
+            <div class="signIn_details firstField">
+                {{ form.email.label(class="signIn_fieldsName") }}
+                {% if form.email.errors %}
+                    {{ form.email(class="form-control mr-sm-2 is-invalid") }}
+                    <div></div>
+                    <div class="invalid-feedback">
+                        {% for error in form.email.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.email(class="form-control mr-sm-2 signIn_input") }}
+                {% endif %}
+            </div>
+            <div class="signIn_details">
+                {{ form.password.label(class="signIn_fieldsName") }}
+                {% if form.password.errors %}
+                    {{ form.password(class="form-control mr-sm-2 is-invalid") }}
+                    <div></div>
+                    <div class="invalid-feedback">
+                        {% for error in form.password.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.password(class="form-control mr-sm-2 signIn_input") }}
+                {% endif %}
+            </div>
+            <div class="form-check">
+                {{ form.remember(class="form-check-input") }}
+                {{ form.remember.label(class="form-check-label") }}
+            </div>
+            <div class="links">
+                <a href="#">Forgot password?</a>
+            </div>
+            
+            <div class="signIn_btn_div">
+                {{ form.submit(class="btn btn-outline-success my-2 my-sm-0 signIn_btn") }}
+                <!-- <button class="btn btn-outline-success my-2 my-sm-0 signIn_btn" type="submit">Sign In</button> -->
+            </div>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Need An Account? <a class="ml-2" href="{{ url_for('signUp') }}">Sign Up Now</a>
+            </small>
+        </div>
+    </div>
+{% endblock content %}

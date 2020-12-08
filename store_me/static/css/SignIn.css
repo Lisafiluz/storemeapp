@@ -1,0 +1,101 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+:root {
+    /* --menu_background: #45a2ff; */
+    --green: #28a745;
+    --dark-gray: #333b3f;
+    --light-dark-gray: #585f63;
+    --light-gray : #f1f1f1;
+}
+body {
+    background-color: var(--light-dark-gray);
+}
+.signIn_container {
+    max-width: 600px;
+    height: 600px;
+    margin: 50px auto;
+    background-color: var(--light-gray);
+    border-radius: 20px;
+}
+.signIn_theme {
+    height: 30%;
+    border-radius: 20px 20px 0 0;
+    width: 100%;
+    position: relative;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding: 20px;
+
+    background-image: url(../images/test_photos/SignInTheme.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.signIn_theme span {
+    font-size: 30px;
+    font-weight: bold;
+    color: var(--light-gray);
+}
+
+.form_container {
+    display: grid;
+    width: 100%;
+    height: 70%;
+    justify-content: center;
+    align-items: center;
+}
+.signIn_details {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+.signIn_input {
+    width: 200px;
+    margin-left: auto;
+    border-color: var(--light-dark-gray);
+}
+.signIn_input:active, .signIn_input:focus {
+    border-color: var(--green);
+    box-shadow: 0 0 0 0.2rem rgb(16 255 0 / 25%);
+}
+.signIn_fieldsName {
+    margin: auto 0;
+    padding-right: 10px;
+    font-size: 20px;
+}
+.firstField {
+    align-self: end;
+}
+.links {
+    margin: 0 auto;
+    width: fit-content;
+    height: fit-content;
+    align-self: baseline;
+}
+.signIn_btn_div {
+    width: 100%;
+    height: 100%;
+}
+.signIn_btn {
+    width: 100%;
+    margin: auto;
+}
+@media only screen and (max-width: 600px) {
+    .signIn_fieldsName {
+        font-size: 18px;
+    }
+    .form_container {
+        padding: 10px;
+    }
+    .signIn_container {
+        margin: 0;
+        border-radius: unset;
+    }
+    .signIn_theme {
+       border-radius: unset; 
+    }
+}

@@ -1,0 +1,111 @@
+{% extends "layout.html" %}
+{% block header %}
+    <link rel="stylesheet" href="../static/css/MyProfile.css">
+{% endblock header %}
+{% block content %}
+    <div class="main_container">
+        <div class="profile_container">
+            
+            <form class="form_container" method="POST" action="">
+                {{ form.hidden_tag() }}
+                <div class="topic">{{ current_user.username }}</div>
+                <div class="profile_details">
+                    {{ form.firstname.label(class="profile_fieldsName") }}
+                    {% if form.firstname.errors %}                        
+                        {{ form.firstname(class="form-control mr-sm-2 profile_input is-invalid", value=current_user.firstname, placeholder="Type your first name") }}
+                        <div></div>
+                        <div class="invalid-feedback">
+                            {% for error in form.firstname.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.firstname(class="form-control mr-sm-2 profile_input", value=current_user.firstname) }}
+                    {% endif %}
+                </div>
+                <div class="profile_details">
+                    {{ form.lastname.label(class="profile_fieldsName") }}
+                    {% if form.lastname.errors %}
+                        {{ form.lastname(class="form-control mr-sm-2 is-invalid", value=current_user.lastname) }}
+                        <div class="invalid-feedback">
+                            {% for error in form.lastname.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.lastname(class="form-control mr-sm-2 profile_input", value=current_user.lastname) }}
+                    {% endif %}
+                </div>
+                <div class="profile_details">
+                    <label class="profile_fieldsName">User name:</label>
+                    <input class="form-control mr-sm-2 profile_input" type="text" value="{{ current_user.username }}" name="profileUsername" id="profileUsername" disabled>
+                </div>
+                <div class="profile_details">
+                    <label class="profile_fieldsName">Email:</label>
+                    <input class="form-control mr-sm-2 profile_input" type="email" value="{{ current_user.email }}" name="profileEmail" id="profileEmailId" disabled>
+                    <!-- <input class="form-control mr-sm-2 profile_input" type="password" value="{{ current_user.email }}" name="profileEmail" id="profileEmailId" disabled> -->
+
+                </div>
+                <div class="profile_details">
+                    {{ form.password.label(class="profile_fieldsName") }}
+                    {% if form.password.errors %}
+                        {{ form.password(class="form-control mr-sm-2 is-invalid", placeholder='**********') }}
+                        <div class="invalid-feedback">
+                            {% for error in form.password.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.password(class="form-control mr-sm-2 profile_input", placeholder='**********') }}
+                    {% endif %}
+                </div>
+                <div class="profile_details">
+                    {{ form.confirm_password.label(class="profile_fieldsName") }}
+                    {% if form.confirm_password.errors %}
+                        {{ form.confirm_password(class="form-control mr-sm-2 is-invalid", placeholder='**********') }}
+                        <div class="invalid-feedback">
+                            {% for error in form.confirm_password.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.confirm_password(class="form-control mr-sm-2 profile_input", placeholder='**********') }}
+                    {% endif %}
+                </div>
+                <div class="profile_details">
+                    <span class="profile_fieldsName">Birthday:</span>
+                    <input class="form-control mr-sm-2 profile_input" type="date" value="1997-05-22" placeholder="Type your first name" name="" id="">
+                </div>
+                <div class="profile_btn_div">
+                    {{ form.submit(class="btn btn-outline-success my-2 my-sm-0 profile_btn") }}
+                    <button class="btn btn-outline-success my-2 my-sm-0 profile_btn" type="submit" disabled>Reset</button>
+                    {{ form.delete(class="btn btn-outline-danger my-2 my-sm-0 profile_btn") }}
+
+                </div>
+            </form>
+        </div>
+        <div class="orders_container">
+            <div class="topic">My Orders</div>
+            <table class="orders_table">
+                <tr>
+                    <th>#</th>
+                    <th>Order ID</th>
+                    <th>Product Name</th>
+                    <th>Order Date</th>
+                    <th>Price</th>
+                    <th>Product</th>
+                </tr>
+                {% for order in orders %}
+                <tr>
+                    <td>{{loop.index}}</td>
+                    <td>{{order[0]['id']}}</td>
+                    <td>{{order['product_name']}}</td>
+                    <td>{{order[0]['order_date']}}</td>
+                    <td>{{order['price']}}$</td>
+                    <td><a href="/product/{{ order['id'] }}">View</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+{% endblock content %}

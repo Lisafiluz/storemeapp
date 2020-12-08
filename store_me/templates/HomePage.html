@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block header %}
+    <link rel="stylesheet" href="../static/css/HomePage.css">
+{% endblock header %}
+{% block content %}
+    <div class="filter_menu"></div>
+    {% if search_count != null %}
+        <div class="results_counter">Found {{search_count}} results for <span>"{{search_txt}}"</span>. displayes {{cards|length}} from them. refine your search for more accurate results.</div>
+    {% endif %}    
+    <div class="products_container">
+        {% for card in cards %}
+        <div class="card" id="{{card['id']}}">
+            <img src="../static/images/products/{{card['main_photo_path']}}" alt="{{product_name}}">
+            <h3>{{card['product_name']}}</h3>
+            <div class="price">{{card['price']}} $</div>
+            <div class="row">
+                <label class="row_name">Color: {{card['base_color']}}</label>
+                <label class="color_indicate" style="background-color: {{card['base_color']}}"></label>
+            </div>
+            <div class="row">
+            </div>
+            <div class="row">
+                <label class="row_name">Gender:</label>
+                <label class="gender">{{card['gender']}}</label>
+            </div>
+            <div class="row">
+                <label class="row_name">Sold:</label>
+                <label class="gender">{{card['sold_count']}}</label>
+            </div>
+            
+            <p class="cart_p">
+                <button class="btn btn-outline-success my-2 my-sm-0 add_to_cart_btn" id="{{ card['id'] }}" productName="{{card['product_name']}}" price="{{card['price']}}">Add to cart</button>
+            </p>
+            
+        </div>
+        {% endfor %}
+    </div>
+    
+{% endblock content %}
+{% block scripts %}
+<script src="../static/scripts/homepage.js"></script>
+{% endblock scripts %}

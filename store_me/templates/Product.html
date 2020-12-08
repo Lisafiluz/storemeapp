@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block header %}
+    <link rel="stylesheet" href="../static/css/HomePage.css">
+{% endblock header %}
+{% block content %}  
+    <div class="products_container">
+        <div class="card" id="{{product['id']}}">
+            <img src="../static/images/products/{{product['main_photo_path']}}" alt="{{product_name}}">
+            <h3>{{product['product_name']}}</h3>
+            <div class="price">{{product['price']}} $</div>
+            <div class="row">
+                <label class="row_name">Color: {{product['base_color']}}</label>
+                <label class="color_indicate" style="background-color: {{product['base_color']}}"></label>
+            </div>
+            <div class="row">
+            </div>
+            <div class="row">
+                <label class="row_name">Gender:</label>
+                <label class="gender">{{product['gender']}}</label>
+            </div>
+            <div class="row">
+                <label class="row_name">Sold:</label>
+                <label class="gender">{{product['sold_count']}}</label>
+            </div>
+            
+            <p class="cart_p">
+                <button class="btn btn-outline-success my-2 my-sm-0 add_to_cart_btn" id="{{ product['id'] }}" productName="{{product['product_name']}}" price="{{product['price']}}">Add to cart</button>
+            </p>
+            
+        </div>
+    </div>
+    
+{% endblock content %}
+{% block scripts %}
+<script src="../static/scripts/homepage.js"></script>
+{% endblock scripts %}
