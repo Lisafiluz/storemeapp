@@ -43,7 +43,7 @@ class Products(db.Model):
 class Orders(db.Model):
     id = db.Column(db.String(16), unique=True, primary_key=True)
     email = db.Column(db.String(120), db.ForeignKey('users.email'), nullable=False)  # users = table name!
-    product_id = db.Column(db.String(16), db.ForeignKey('products.id'), nullable=False)  # products = table name!
+    product_id = db.Column(db.Integer, db.ForeignKey('products.id'), nullable=False)  # products = table name!
     order_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
     def __repr__(self):
@@ -53,7 +53,7 @@ class Orders(db.Model):
 class Carts(db.Model):
     id = db.Column(db.String(16), unique=True, primary_key=True)
     email = db.Column(db.String(120), db.ForeignKey('users.email'), unique=True, nullable=False)  # users = table name!
-    product_id = db.Column(db.String(16), db.ForeignKey('products.id'), unique=True)  # products = table name!
+    product_id = db.Column(db.Integer, db.ForeignKey('products.id'), unique=True)  # products = table name!
 
     def __repr__(self):
         return f"Cart('{self.id}', '{self.email}', '{self.product_id}')"

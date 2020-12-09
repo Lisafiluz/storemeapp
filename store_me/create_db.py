@@ -13,10 +13,10 @@ class Create_DB:
 
     def __init__(self, db):
         self.db = db
-        db.create_all()
-        self.create_users()
-        self.create_products()
-        self.create_orders()
+        # db.create_all()
+        #self.create_users()
+        # self.create_products()
+        #self.create_orders()
         print(self)
 
     def create_users(self):
