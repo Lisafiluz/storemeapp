@@ -6,11 +6,17 @@ from store_me.models import Users, Products, Orders, Carts
 from flask_login import login_user, current_user, logout_user, login_required
 
 
+global search_limitation
+search_limitation = 40
+
+
 def get_searched_products(search_txt: str, limit: int) -> list:
     search = "%{}%".format(search_txt)
+    print(search)
     top_products = Products.query.filter((Products.product_name.like(search))
                                         | (Products.gender.like(search))
                                         | (Products.base_color.like(search))).all()
+    print(top_products)
     return (len(top_products), top_products[:limit])
 
 
@@ -21,11 +27,11 @@ def home():
     search_form = SearchProductForm()
     if search_form.validate_on_submit():
         # TODO add user results count in 
-        top_products = get_searched_products(search_form.search_txt.data, 40)
+        top_products = get_searched_products(search_form.search_txt.data, search_limitation)
         print(top_products)
         return render_template('HomePage.html', search_form=search_form, search_txt=search_form.search_txt.data, search_count=top_products[0], cards=top_products[1])
     else:
-        top_products = Products.query.order_by(Products.sold_count.desc())[:40]
+        top_products = Products.query.order_by(Products.sold_count.desc())[:search_limitation]
     
     # add_to_cart_form = AddToCartForm()
     # if add_to_cart_form.validate_on_submit():
@@ -43,8 +49,8 @@ def signUp():
     
     search_form = SearchProductForm()
     if search_form.validate_on_submit():
-        top_products = get_searched_products(search_form.search_txt.data, 20)
-        return render_template('HomePage.html', search_form=search_form, cards=top_products)
+        top_products = get_searched_products(search_form.search_txt.data, search_limitation)
+        return render_template('HomePage.html', search_form=search_form, search_txt=search_form.search_txt.data, search_count=top_products[0], cards=top_products[1])
     
     form = SignUpForm()
     if form.validate_on_submit():
@@ -68,8 +74,8 @@ def signIn():
     
     search_form = SearchProductForm()
     if search_form.validate_on_submit():
-        top_products = get_searched_products(search_form.search_txt.data, 20)
-        return render_template('HomePage.html', search_form=search_form, cards=top_products)
+        top_products = get_searched_products(search_form.search_txt.data, search_limitation)
+        return render_template('HomePage.html', search_form=search_form, search_txt=search_form.search_txt.data, search_count=top_products[0], cards=top_products[1])
     
     form = SignInForm()
     if form.validate_on_submit():
@@ -94,8 +100,8 @@ def signOut():
 def myProfile():
     search_form = SearchProductForm()
     if search_form.validate_on_submit():
-        top_products = get_searched_products(search_form.search_txt.data, 20)
-        return render_template('HomePage.html', search_form=search_form, cards=top_products)
+        top_products = get_searched_products(search_form.search_txt.data, search_limitation)
+        return render_template('HomePage.html', search_form=search_form, search_txt=search_form.search_txt.data, search_count=top_products[0], cards=top_products[1])
 
     form = UpdateUserForm()
     if form.submit.data:
@@ -139,8 +145,9 @@ def myProfile():
 def get_product(product_id):
     search_form = SearchProductForm()
     if search_form.validate_on_submit():
-        top_products = get_searched_products(search_form.search_txt.data, 20)
-        return render_template('HomePage.html', search_form=search_form, cards=top_products)
+        top_products = get_searched_products(search_form.search_txt.data, search_limitation)
+        return render_template('HomePage.html', search_form=search_form, search_txt=search_form.search_txt.data, search_count=top_products[0], cards=top_products[1])
+    
     product = Products.query.filter_by(id=product_id).first()
     print(product)
     return render_template('Product.html', search_form=search_form, product=product)
@@ -156,5 +163,5 @@ def buy(product_ids):
         order = Orders(id=secrets.token_hex(8), email=current_user.email, product_id=product_id)
         db.session.add(order)
     db.session.commit()
-    flash(f'Your order is on the way fo you!', 'success') # don't work
+    flash(f'Your order is on the way for you!', 'success') # don't work
     return redirect(url_for('myProfile'))  # don't work

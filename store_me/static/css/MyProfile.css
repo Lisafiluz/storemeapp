@@ -102,8 +102,8 @@ body {
     background-color: var(--green);
     color: white;
 }
-tbody {
-    height: 700px;
+.orders_table tbody {
+    max-height: 700px;
     display: inline-block;
     overflow-y: scroll;
 }

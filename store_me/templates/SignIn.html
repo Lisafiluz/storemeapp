@@ -49,11 +49,11 @@
                 {{ form.submit(class="btn btn-outline-success my-2 my-sm-0 signIn_btn") }}
                 <!-- <button class="btn btn-outline-success my-2 my-sm-0 signIn_btn" type="submit">Sign In</button> -->
             </div>
+            <div class="border-top pt-3">
+                <small class="text-muted">
+                    Need An Account? <a class="ml-2" href="{{ url_for('signUp') }}">Sign Up Now</a>
+                </small>
+            </div>
         </form>
-        <div class="border-top pt-3">
-            <small class="text-muted">
-                Need An Account? <a class="ml-2" href="{{ url_for('signUp') }}">Sign Up Now</a>
-            </small>
-        </div>
     </div>
 {% endblock content %}

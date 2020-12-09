@@ -96,11 +96,11 @@
             <div class="signUp_btn_div">
                 {{ form.submit(class="btn btn-outline-success my-2 my-sm-0 signUp_btn") }}
             </div>
+            <div class="border-top pt-3">
+                <small class="text-muted">
+                    Already Have An Account? <a class="ml-2" href="{{ url_for('signIn') }}">Sign In</a>
+                </small>
+            </div>
         </form>
-        <div class="border-top pt-3">
-            <small class="text-muted">
-                Already Have An Account? <a class="ml-2" href="{{ url_for('signIn') }}">Sign In</a>
-            </small>
-        </div>
     </div>
 {% endblock content %}

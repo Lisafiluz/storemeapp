@@ -98,14 +98,17 @@
 /* footer */
 footer {
 background-color: var(--dark-gray);
-color: var(--light-gray);
+    color: var(--light-gray);
 }
 footer a {
-color: var(--green);
+    color: var(--green);
 }
 footer a:hover {
-color: var(--green);
+    color: var(--green);
 }
 footer hr {
-border-top: 1px solid var(--light-gray);
+    border-top: 1px solid var(--light-gray);
+}
+.contact_footer {
+    padding: 10px;
 }
