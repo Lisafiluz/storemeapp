@@ -12,6 +12,7 @@ Backend:
 Frontend:
   js: jquery
   html: jinja
+  css: bootstrap
   
 Fuctionallity:
 1. Sign up
@@ -27,8 +28,3 @@ TODO:
 2. Filter the results with build-in filters e.g gender, color
 3. Improve search engine
 4. Add more products in one page with result pages view
-
-Open issues:
-1. Any new api request delete the cart
-2. Can send empty cart for buy it
-3. Validation in search executing also if other form is validated

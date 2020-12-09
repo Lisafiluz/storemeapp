@@ -8,7 +8,9 @@ from flask_login import login_user, current_user, logout_user, login_required
 
 def get_searched_products(search_txt: str, limit: int) -> list:
     search = "%{}%".format(search_txt)
-    top_products = Products.query.filter(Products.product_name.like(search)).all()
+    top_products = Products.query.filter((Products.product_name.like(search))
+                                        | (Products.gender.like(search))
+                                        | (Products.base_color.like(search))).all()
     return (len(top_products), top_products[:limit])
 
 
@@ -18,11 +20,12 @@ def home():
     print(request.args)
     search_form = SearchProductForm()
     if search_form.validate_on_submit():
-        top_products = get_searched_products(search_form.search_txt.data, 20)
+        # TODO add user results count in 
+        top_products = get_searched_products(search_form.search_txt.data, 40)
         print(top_products)
         return render_template('HomePage.html', search_form=search_form, search_txt=search_form.search_txt.data, search_count=top_products[0], cards=top_products[1])
     else:
-        top_products = Products.query.order_by(Products.sold_count.desc())[:20]
+        top_products = Products.query.order_by(Products.sold_count.desc())[:40]
     
     # add_to_cart_form = AddToCartForm()
     # if add_to_cart_form.validate_on_submit():
