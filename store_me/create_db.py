@@ -80,10 +80,10 @@ class Create_DB:
                 Products: {len(self.products)}
                 Orders: {len(self.orders)}"""
 
-#creator = Create_DB()
-#creator.create_users()
-#creator.create_products()
-#creator.create_orders()
+# creator = Create_DB()
+# creator.create_users()
+# creator.create_products()
+# creator.create_orders()
 #print(creator)
 
 
