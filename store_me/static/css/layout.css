@@ -42,6 +42,9 @@
     width: max-content !important;
     padding: 20px;
 }
+.dropdown:hover>.dropdown-menu {
+    display: block;
+}
 .cart_container {
     cursor: pointer;
     height: 100%;
