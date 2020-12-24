@@ -73,8 +73,17 @@
                     {% endif %}
                 </div>
                 <div class="profile_details">
-                    <span class="profile_fieldsName">Birthday:</span>
-                    <input class="form-control mr-sm-2 profile_input" type="date" value="1997-05-22" placeholder="Type your first name" name="" id="">
+                    {{ form.birthday.label(class="profile_fieldsName") }}
+                    {% if form.birthday.errors %}
+                        {{ form.birthday(class="form-control mr-sm-2 is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.birthday.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.birthday(class="form-control mr-sm-2 profile_input", value=current_user.birthday.strftime("%Y-%m-%d") if current_user.birthday != None) }}
+                    {% endif %}
                 </div>
                 <div class="profile_btn_div">
                     {{ form.submit(class="btn btn-outline-success my-2 my-sm-0 profile_btn") }}

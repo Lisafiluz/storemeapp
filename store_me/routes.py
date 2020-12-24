@@ -37,7 +37,6 @@ def home():
     # if add_to_cart_form.validate_on_submit():
     #     print("ADD TO CART", add_to_cart_form.add)
     # TODO
-    # 1. get products - maybe top 20 products (by sold count)
     # 1. get categories for ordering -> gender, base color, price
     return render_template('HomePage.html', search_form=search_form, cards=top_products)
 
@@ -59,7 +58,8 @@ def signUp():
                             lastname=form.lastname.data,
                             username=form.username.data,
                             email=form.email.data,
-                            password=hashed_password)  # withour birthday
+                            password=hashed_password,
+                            birthday=form.birthday.data)
         db.session.add(user)
         db.session.commit()
         flash(f'Your acount has been created! You are now able to sign in', 'success')
@@ -102,7 +102,7 @@ def myProfile():
     if search_form.validate_on_submit():
         top_products = get_searched_products(search_form.search_txt.data, search_limitation)
         return render_template('HomePage.html', search_form=search_form, search_txt=search_form.search_txt.data, search_count=top_products[0], cards=top_products[1])
-
+    print(current_user.birthday)
     form = UpdateUserForm()
     if form.submit.data:
         if form.validate_on_submit():
@@ -114,14 +114,16 @@ def myProfile():
                                 lastname=form.lastname.data,
                                 username=current_user.username,
                                 email=current_user.email,
-                                password=hashed_password)  # without birthday and email
-            # print(current_user)
+                                password=hashed_password,
+                                birthday=form.birthday.data)
+            print(form.birthday.data)
             user_for_update = Users.query.filter_by(email=current_user.email).first()
             print(user_for_update)
             user_for_update.firstname = user.firstname
             user_for_update.lastname = user.lastname
             # user_for_update.username = user.username
             user_for_update.password = hashed_password
+            user_for_update.birthday = user.birthday
             db.session.commit()
             flash(f'Your acount has been updated!', 'success')
             return redirect(url_for('myProfile'))
@@ -136,8 +138,6 @@ def myProfile():
             # JOIN products 
             # ON orders.product_id = Products.id
     orders = Orders.query.join(Products).add_columns(Products.product_name, Products.price, Products.id).filter(Orders.email==current_user.email).all()
-    print(Orders.query.join(Products).add_columns(Products.product_name, Products.price).all())
-    # print(orders)
     return render_template('MyProfile.html', title=current_user.username, search_form=search_form, form=form, orders=orders)
 
 

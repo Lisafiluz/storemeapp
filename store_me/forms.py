@@ -1,5 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, BooleanField
+from wtforms.fields.html5 import DateField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 
 from store_me.models import Users
@@ -17,7 +18,7 @@ class SignUpForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])  #can add min and max
     confirm_password = PasswordField('Confirm Password', validators=[DataRequired(),
                                     EqualTo('password')])  #can add min and max
-    #for birdhday??
+    birthday = DateField('Birthday', format='%Y-%m-%d')
     submit = SubmitField('Sign Up')
 
     def validate_username(self, username):
@@ -49,7 +50,7 @@ class UpdateUserForm(FlaskForm):
     #                     validators=[DataRequired(), Email()])
     password = PasswordField('Password')  #can add min and max
     confirm_password = PasswordField('Confirm Password', validators=[EqualTo('password')])  #can add min and max
-    #for birdhday??
+    birthday = DateField('Birthday', format='%Y-%m-%d')
     submit = SubmitField('Save')
     delete = SubmitField('Delete')
 

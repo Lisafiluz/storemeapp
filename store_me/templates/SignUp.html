@@ -90,8 +90,17 @@
                 {% endif %}
             </div>
             <div class="signUp_details">
-                <span class="signUp_fieldsName">Birthday:</span>
-                <input class="form-control mr-sm-2 signUp_input" type="date" placeholder="Type your first name" name="" id="">
+                {{ form.birthday.label(class="signUp_fieldsName") }}
+                {% if form.birthday.errors %}
+                    {{ form.birthday(class="form-control mr-sm-2 is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.birthday.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.birthday(class="form-control mr-sm-2 signUp_input") }}
+                {% endif %}
             </div>
             <div class="signUp_btn_div">
                 {{ form.submit(class="btn btn-outline-success my-2 my-sm-0 signUp_btn") }}
