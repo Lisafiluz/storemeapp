@@ -29,10 +29,9 @@ TODO:
 3. Improve search engine
 4. Add more products in one page with result pages view
 5. Forgot password form (optionally modal view)
-6. Insert birthday to the db
-7. Email sending
-8. Admin page:
+6. Email sending
+7. Admin page:
   a. See orders
   b. Upload products
   c. View statistics
-9. 404 page
+8. 404 page
