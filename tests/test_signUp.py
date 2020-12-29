@@ -1,11 +1,12 @@
 from copy import deepcopy
 import datetime
-from http import HTTPStatus
-import pytest
 import re
 import secrets
 
+import pytest
+
 from StoreMeApp.store_me import models
+
 
 def get_dict_without_key(SIGNUP_DETAILS, k):
     copy_d = deepcopy(SIGNUP_DETAILS)
@@ -36,7 +37,7 @@ SIGNUP_DETAILS = {
     'password': '123456',
     'confirm_password': '123456',
     'birthday': datetime.date(1997, 5, 26)
-    }
+}
 POSSIBLE_SIGNUP_OPTIONS = [get_dict_without_key(SIGNUP_DETAILS, k)
                             for k, v in SIGNUP_DETAILS.items()]
 

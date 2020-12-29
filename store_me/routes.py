@@ -1,10 +1,10 @@
 import datetime
 from http import HTTPStatus
-from store_me import app, db, bcrypt
+from . import app, db, bcrypt
 import secrets
 from flask import abort, jsonify, render_template, redirect, url_for, request, flash, redirect
-from store_me.forms import SignUpForm, SignInForm, UpdateUserForm, SearchProductForm, AddToCartForm
-from store_me.models import Users, Products, Orders, Carts
+from .forms import SignUpForm, SignInForm, UpdateUserForm, SearchProductForm, AddToCartForm
+from .models import Users, Products, Orders, Carts
 from flask_login import login_user, current_user, logout_user, login_required
 
 

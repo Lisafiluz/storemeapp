@@ -4,8 +4,8 @@ from faker import Faker
 import pandas
 import secrets
 
-from store_me import bcrypt
-from store_me.models import Users, Products, Orders
+from StoreMeApp.store_me import bcrypt
+from StoreMeApp.store_me.models import Users, Products, Orders
 
 class Create_DB:
     users = []

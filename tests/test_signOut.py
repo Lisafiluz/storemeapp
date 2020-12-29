@@ -1,7 +1,4 @@
-from http import HTTPStatus
-import pytest
 import re
-import secrets
 
 
 SIGNOUT_PAGE = '/signOut'

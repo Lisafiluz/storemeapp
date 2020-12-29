@@ -1,6 +1,5 @@
 import datetime
 from http import HTTPStatus
-import pytest
 import re
 import secrets
 
@@ -32,7 +31,7 @@ class TestMyProfile:
     def test_my_profile_returns_ok(client, user):
         data = TestMyProfile.get_signIn_form_data(user.email)
         client.post(SIGNIN_PAGE, data=data)
-        response = client.get(MYFROFILE_PAGE,follow_redirects=True)
+        response = client.get(MYFROFILE_PAGE, follow_redirects=True)
         assert response.status_code == HTTPStatus.OK
     
     @staticmethod

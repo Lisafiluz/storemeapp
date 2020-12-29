@@ -1,3 +1,5 @@
-import store_me
+from store_me import app
+
+
 if __name__ == '__main__':
-    store_me.app.run(debug=False)
+    app.run(debug=True)

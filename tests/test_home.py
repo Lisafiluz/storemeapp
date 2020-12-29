@@ -1,8 +1,3 @@
-from http import HTTPStatus
-import pytest
-import re
-
-
 HOME_PAGE = ['/', '/home']
 
 VALIDATION_MESSAGES = {

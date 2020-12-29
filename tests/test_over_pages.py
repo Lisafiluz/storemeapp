@@ -1,6 +1,7 @@
 from http import HTTPStatus
-import pytest
 import re
+
+import pytest
 
 from StoreMeApp.store_me import models
 
