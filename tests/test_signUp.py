@@ -5,7 +5,7 @@ import pytest
 import re
 import secrets
 
-from StoreMeApp.store_me import models
+from store_me import models
 
 def get_dict_without_key(SIGNUP_DETAILS, k):
     copy_d = deepcopy(SIGNUP_DETAILS)

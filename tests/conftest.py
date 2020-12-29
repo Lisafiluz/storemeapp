@@ -5,7 +5,7 @@ import tempfile
 
 import pytest
 
-from StoreMeApp.store_me import app, bcrypt, db, models 
+from store_me import app, bcrypt, db, models 
 
 
 @pytest.fixture

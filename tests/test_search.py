@@ -2,7 +2,7 @@ from http import HTTPStatus
 import pytest
 import re
 
-from StoreMeApp.store_me import models
+from store_me import models
 
 
 PAGES = ['/', '/home', '/signIn', '/signUp', f'/product/{models.Products.get_random_product_number()}']

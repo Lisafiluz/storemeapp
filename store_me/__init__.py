@@ -17,6 +17,6 @@ login_manager = LoginManager(app)
 login_manager.login_view = 'signIn'
 login_manager.login_message_category = 'info'
 
-from StoreMeApp.store_me import routes
+from store_me import routes
 # from store_me.create_db import Create_DB
 # Create_DB(db)

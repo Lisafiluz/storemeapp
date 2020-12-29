@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from StoreMeApp.store_me import bcrypt, db, login_manager
+from store_me import bcrypt, db, login_manager
 from flask_login import UserMixin
 
 
