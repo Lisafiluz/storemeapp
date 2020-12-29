@@ -70,3 +70,11 @@ class TestSignIn:
         assert (len(re.findall(VALIDATION_MESSAGES['success_signIn'], response.data)) == 1
                 and bytes(user.username, encoding='utf-8') in response.data
                 and response.status_code == HTTPStatus.OK)
+    
+    @staticmethod
+    def test_signIn_case_sensetive_success(client, user):
+        data = TestSignIn.get_signIn_form_data(user.email.upper())
+        response = client.post(SIGNIN_PAGE, data=data, follow_redirects=True)
+        assert (len(re.findall(VALIDATION_MESSAGES['success_signIn'], response.data)) == 1
+                and bytes(user.username, encoding='utf-8') in response.data
+                and response.status_code == HTTPStatus.OK)

@@ -2,8 +2,9 @@ import random
 
 from faker import Faker
 import pandas
-from store_me import bcrypt
 import secrets
+
+from store_me import bcrypt
 from store_me.models import Users, Products, Orders
 
 class Create_DB:

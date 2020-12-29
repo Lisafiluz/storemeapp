@@ -1,4 +1,3 @@
-from store_me import app
-
+import store_me
 if __name__ == '__main__':
-    app.run(debug=False)
+    store_me.app.run(debug=False)

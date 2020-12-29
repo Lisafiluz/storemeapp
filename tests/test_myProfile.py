@@ -4,7 +4,7 @@ import pytest
 import re
 import secrets
 
-from store_me import models
+from StoreMeApp.store_me import models
 
 
 HOME_PAGE = ['/', '/home']
