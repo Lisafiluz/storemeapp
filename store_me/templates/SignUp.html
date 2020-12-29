@@ -13,6 +13,7 @@
                 {{ form.firstname.label(class="signUp_fieldsName") }}
                 {% if form.firstname.errors %}
                     {{ form.firstname(class="form-control mr-sm-2 is-invalid") }}
+                    <div></div>
                     <div class="invalid-feedback">
                         {% for error in form.firstname.errors %}
                             <span>{{ error }}</span>
@@ -26,6 +27,7 @@
                 {{ form.lastname.label(class="signUp_fieldsName") }}
                 {% if form.lastname.errors %}
                     {{ form.lastname(class="form-control mr-sm-2 is-invalid") }}
+                    <div></div>
                     <div class="invalid-feedback">
                         {% for error in form.lastname.errors %}
                             <span>{{ error }}</span>
@@ -41,6 +43,7 @@
                 {{ form.username.label(class="signUp_fieldsName") }}
                 {% if form.username.errors %}
                     {{ form.username(class="form-control mr-sm-2 is-invalid") }}
+                    <div></div>
                     <div class="invalid-feedback">
                         {% for error in form.username.errors %}
                             <span>{{ error }}</span>
@@ -54,6 +57,7 @@
                 {{ form.email.label(class="signUp_fieldsName") }}
                 {% if form.email.errors %}
                     {{ form.email(class="form-control mr-sm-2 is-invalid") }}
+                    <div></div>
                     <div class="invalid-feedback">
                         {% for error in form.email.errors %}
                             <span>{{ error }}</span>
@@ -67,6 +71,7 @@
                 {{ form.password.label(class="signUp_fieldsName") }}
                 {% if form.password.errors %}
                     {{ form.password(class="form-control mr-sm-2 is-invalid") }}
+                    <div></div>
                     <div class="invalid-feedback">
                         {% for error in form.password.errors %}
                             <span>{{ error }}</span>
@@ -80,6 +85,7 @@
                 {{ form.confirm_password.label(class="signUp_fieldsName") }}
                 {% if form.confirm_password.errors %}
                     {{ form.confirm_password(class="form-control mr-sm-2 is-invalid") }}
+                    <div></div>
                     <div class="invalid-feedback">
                         {% for error in form.confirm_password.errors %}
                             <span>{{ error }}</span>
@@ -93,6 +99,7 @@
                 {{ form.birthday.label(class="signUp_fieldsName") }}
                 {% if form.birthday.errors %}
                     {{ form.birthday(class="form-control mr-sm-2 is-invalid") }}
+                    <div></div>
                     <div class="invalid-feedback">
                         {% for error in form.birthday.errors %}
                             <span>{{ error }}</span>

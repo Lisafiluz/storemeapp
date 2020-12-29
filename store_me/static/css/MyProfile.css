@@ -104,6 +104,6 @@ body {
 }
 .orders_table tbody {
     max-height: 700px;
-    display: inline-block;
+    /* display: inline-block; */
     overflow-y: scroll;
 }

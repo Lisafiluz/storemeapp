@@ -1,2 +1,2 @@
 FLASK_ENV=development
-FLASK_APP=store_me
+FLASK_APP=run.py
