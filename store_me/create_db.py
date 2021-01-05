@@ -86,6 +86,3 @@ class Create_DB:
 # creator.create_products()
 # creator.create_orders()
 #print(creator)
-
-
-

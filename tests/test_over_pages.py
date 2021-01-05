@@ -13,7 +13,7 @@ SIGNIN_PAGE = '/signIn'
 VALIDATION_MESSAGES = {
     'empty_required_field': b'This field is required',
     'required_page': b'Please log in to access this page',
-    'aleady_signed_in': b'You are already signed In'
+    'already_signed_in': b'You are already signed In'
 }
 
 SIGNIN_REQUIRED_PAGES = [
@@ -61,4 +61,4 @@ class TestOverPages:
         }
         client.post(SIGNIN_PAGE, data=data, follow_redirects=True)
         response = client.get(url, follow_redirects=True)
-        assert len(re.findall(VALIDATION_MESSAGES['aleady_signed_in'], response.data)) == 1
+        assert len(re.findall(VALIDATION_MESSAGES['already_signed_in'], response.data)) == 1
