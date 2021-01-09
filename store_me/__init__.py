@@ -7,8 +7,8 @@ from flask_sqlalchemy import SQLAlchemy
 
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.environ['SECRET_KEY']
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
+app.config['SECRET_KEY'] = os.environ['SECRET_KEY'] or '2a6352e066e2360e8169b91e4d3e8a5f'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL'] or 'sqlite:///site.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
